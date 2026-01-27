@@ -1,23 +1,42 @@
-import mysql from 'mysql2/promise';
+import mysql, { ConnectionOptions } from 'mysql2/promise';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-const dbConfig = {
-  host: process.env.OCEANBASE_HOST || 'localhost',
-  port: parseInt(process.env.OCEANBASE_PORT || '3306'),
-  user: process.env.OCEANBASE_USER || 'root',
-  password: process.env.OCEANBASE_PASSWORD || '',
-  database: process.env.OCEANBASE_DATABASE || 'test',
-  connectTimeout: 60000,
-  ssl: false,
-  multipleStatements: false,
-};
+function getDbConfig(): ConnectionOptions {
+  const url = process.env.DATABASE_URL;
+  if (!url) {
+    throw new Error('DATABASE_URL environment variable is required');
+  }
+
+  try {
+    const parsed = new URL(url);
+    if (parsed.protocol !== 'mysql:' && parsed.protocol !== 'mysql2:') {
+      throw new Error(`Unsupported database protocol: ${parsed.protocol}. Expected mysql:// or mysql2://`);
+    }
+
+    return {
+      host: parsed.hostname,
+      port: parseInt(parsed.port || '3306'),
+      user: decodeURIComponent(parsed.username),
+      password: decodeURIComponent(parsed.password),
+      database: parsed.pathname.slice(1),
+      connectTimeout: 60000,
+      multipleStatements: false,
+    };
+  } catch (error: any) {
+    if (error instanceof TypeError) {
+      throw new Error(`Invalid DATABASE_URL format: ${error.message}`);
+    }
+    throw error;
+  }
+}
 
 let connection: mysql.Connection | null = null;
 let initialized = false;
 
 async function getConnection(): Promise<mysql.Connection> {
   if (!connection) {
+    const dbConfig = getDbConfig();
     connection = await mysql.createConnection(dbConfig);
   }
   return connection;

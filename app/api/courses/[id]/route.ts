@@ -29,31 +29,6 @@ export async function GET(
   }
 }
 
-// PUT - 更新课程信息
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  try {
-    const body = await request.json();
-    const { name, description, instructor, department, credits, capacity, semester } = body;
-
-    await query(
-      `UPDATE \`courses\` 
-       SET \`name\` = ?, \`description\` = ?, \`instructor\` = ?, \`department\` = ?, \`credits\` = ?, \`capacity\` = ?, \`semester\` = ?
-       WHERE \`id\` = ?`,
-      [name, description, instructor, department, credits, capacity, semester, params.id]
-    );
-
-    return NextResponse.json({ success: true, message: 'Course updated successfully' });
-  } catch (error: any) {
-    return NextResponse.json(
-      { success: false, error: error.message },
-      { status: 500 }
-    );
-  }
-}
-
 // DELETE - 删除课程
 export async function DELETE(
   request: NextRequest,

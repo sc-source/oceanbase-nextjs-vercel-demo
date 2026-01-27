@@ -258,6 +258,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchCourses();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [departmentFilter, semesterFilter]);
 
   return (
