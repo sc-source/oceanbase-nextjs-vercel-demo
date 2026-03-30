@@ -1,6 +1,6 @@
--- 大学选课系统数据库初始化脚本
+-- UniSelect Course: database initialization
 
--- 课程表
+-- Courses table
 CREATE TABLE IF NOT EXISTS `courses` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `code` VARCHAR(20) NOT NULL UNIQUE,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `courses` (
   INDEX idx_semester (`semester`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 课程评价表
+-- Course reviews table
 CREATE TABLE IF NOT EXISTS `reviews` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `course_id` INT NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   INDEX idx_rating (`rating`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 插入示例课程数据
+-- Sample courses
 INSERT INTO `courses` (`code`, `name`, `description`, `instructor`, `department`, `credits`, `capacity`, `enrolled`, `semester`) VALUES
   ('CS101', 'Introduction to Computer Science', 'An introductory course covering fundamental concepts of computer science, programming basics, and problem-solving techniques.', 'Dr. Sarah Johnson', 'Computer Science', 3, 50, 45, 'Fall 2024'),
   ('MATH201', 'Calculus I', 'Differential and integral calculus of functions of one variable. Topics include limits, continuity, derivatives, and integrals.', 'Prof. Michael Chen', 'Mathematics', 4, 40, 38, 'Fall 2024'),
@@ -43,7 +43,7 @@ INSERT INTO `courses` (`code`, `name`, `description`, `instructor`, `department`
   ('PSY101', 'Introduction to Psychology', 'Survey of major areas of psychology including perception, learning, memory, and social behavior.', 'Prof. James Wilson', 'Psychology', 3, 45, 40, 'Fall 2024')
 ON DUPLICATE KEY UPDATE `name`=VALUES(`name`);
 
--- 插入示例评价数据
+-- Sample reviews
 INSERT INTO `reviews` (`course_id`, `student_name`, `rating`, `comment`) VALUES
   (1, 'Alice Zhang', 5, 'Excellent course! The instructor explains concepts clearly and the assignments are well-structured. Highly recommend for beginners.'),
   (1, 'Bob Smith', 4, 'Good introduction to CS. Some topics could be explained in more detail, but overall a solid course.'),

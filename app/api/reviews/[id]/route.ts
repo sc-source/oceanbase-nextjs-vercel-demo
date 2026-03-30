@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { query } from '@/lib/db';
 
-// DELETE - 删除评价
+// DELETE - remove a review
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }

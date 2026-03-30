@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { query } from '@/lib/db';
 
-// PUT - 更新课程容量
+// PUT - update course capacity
 export async function PUT(
   request: NextRequest,
   { params }: { params: { id: string } }

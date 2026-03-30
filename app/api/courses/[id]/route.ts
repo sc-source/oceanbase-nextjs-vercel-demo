@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { query } from '@/lib/db';
 
-// GET - 获取单个课程详情
+// GET - course by id
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
@@ -29,7 +29,7 @@ export async function GET(
   }
 }
 
-// DELETE - 删除课程
+// DELETE - remove course
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }

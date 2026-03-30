@@ -142,6 +142,6 @@ export async function query<T = any>(
     }
   }
   
-  throw new Error('查询失败');
+  throw new Error('Query failed');
 }
 

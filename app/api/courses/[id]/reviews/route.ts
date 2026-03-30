@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { query } from '@/lib/db';
 
-// GET - 获取课程的所有评价
+// GET - list reviews for course
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
@@ -21,7 +21,7 @@ export async function GET(
   }
 }
 
-// POST - 添加课程评价
+// POST - add review
 export async function POST(
   request: NextRequest,
   { params }: { params: { id: string } }

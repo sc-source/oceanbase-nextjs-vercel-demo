@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'OceanBase Course Vercel Demo',
-  description: '大学选课后台管理系统演示 - Powered by OceanBase Cloud, Next.js and Vercel',
+  title: 'UniSelect Course',
+  description:
+    'UniSelect Course is a university course selection management system. Manage courses, view details, add and delete reviews, and edit capacity.',
 };
 
 export default function RootLayout({
@@ -12,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh-CN">
+    <html lang="en">
       <body>{children}</body>
     </html>
   );

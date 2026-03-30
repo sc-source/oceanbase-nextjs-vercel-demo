@@ -264,8 +264,11 @@ export default function Home() {
   return (
     <div className="container">
       <div className="header">
-        <h1>🎓 OceanBase Course Vercel Demo</h1>
-        <p>大学选课后台管理系统演示 - Powered by OceanBase Cloud, Next.js & Vercel</p>
+        <h1>🎓 UniSelect Course</h1>
+        <p>
+          University course selection admin · Manage courses, view details, add/delete reviews, edit capacity ·
+          Powered by OceanBase Cloud, Next.js &amp; Vercel
+        </p>
       </div>
 
       {error && <div className="error">{error}</div>}
@@ -273,36 +276,36 @@ export default function Home() {
 
       <div className="table-section">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-          <h2 style={{ margin: 0 }}>课程列表</h2>
+          <h2 style={{ margin: 0 }}>Courses</h2>
           <button
             className="button"
             onClick={() => setShowCreateModal(true)}
           >
-            ➕ 创建课程
+            ➕ New course
           </button>
         </div>
         <div className="filters">
           <div className="filter-group">
-            <label htmlFor="department-filter">按院系筛选</label>
+            <label htmlFor="department-filter">Department</label>
             <select
               id="department-filter"
               value={departmentFilter}
               onChange={(e) => setDepartmentFilter(e.target.value)}
             >
-              <option value="">全部院系</option>
+              <option value="">All departments</option>
               {departments.map(dept => (
                 <option key={dept} value={dept}>{dept}</option>
               ))}
             </select>
           </div>
           <div className="filter-group">
-            <label htmlFor="semester-filter">按学期筛选</label>
+            <label htmlFor="semester-filter">Semester</label>
             <select
               id="semester-filter"
               value={semesterFilter}
               onChange={(e) => setSemesterFilter(e.target.value)}
             >
-              <option value="">全部学期</option>
+              <option value="">All semesters</option>
               <option value="Fall 2024">Fall 2024</option>
               <option value="Spring 2024">Spring 2024</option>
               <option value="Summer 2024">Summer 2024</option>
@@ -311,9 +314,9 @@ export default function Home() {
         </div>
 
         {loading ? (
-          <div className="loading">加载中...</div>
+          <div className="loading">Loading...</div>
         ) : courses.length === 0 ? (
-          <div className="empty">暂无课程数据</div>
+          <div className="empty">No courses yet</div>
         ) : (
           <div className="course-grid">
             {courses.map((course) => (
@@ -324,17 +327,17 @@ export default function Home() {
                 <div className="course-name">{course.name}</div>
                 <div className="course-info">👨‍🏫 {course.instructor}</div>
                 <div className="course-info">🏛️ {course.department}</div>
-                <div className="course-info">📚 {course.credits} 学分 | 📅 {course.semester}</div>
+                <div className="course-info">📚 {course.credits} credits | 📅 {course.semester}</div>
                 <div className="course-meta">
                   <div className="capacity-info">
-                    已选: <strong>{course.enrolled}</strong> / <strong>{course.capacity}</strong>
+                    Enrolled: <strong>{course.enrolled}</strong> / <strong>{course.capacity}</strong>
                   </div>
                   <div style={{ 
                     color: course.enrolled >= course.capacity ? '#dc3545' : '#28a745',
                     fontSize: '0.85rem',
                     fontWeight: 600
                   }}>
-                    {course.enrolled >= course.capacity ? '已满' : '可选'}
+                    {course.enrolled >= course.capacity ? 'Full' : 'Open'}
                   </div>
                 </div>
               </div>
@@ -353,20 +356,20 @@ export default function Home() {
 
             <div>
               <div style={{ marginBottom: '1rem' }}>
-                <strong>课程代码:</strong> {selectedCourse.code}
+                <strong>Code:</strong> {selectedCourse.code}
               </div>
               <div style={{ marginBottom: '1rem' }}>
-                <strong>授课教师:</strong> {selectedCourse.instructor}
+                <strong>Instructor:</strong> {selectedCourse.instructor}
               </div>
               <div style={{ marginBottom: '1rem' }}>
-                <strong>所属院系:</strong> {selectedCourse.department}
+                <strong>Department:</strong> {selectedCourse.department}
               </div>
               <div style={{ marginBottom: '1rem' }}>
-                <strong>学分:</strong> {selectedCourse.credits} | <strong>学期:</strong> {selectedCourse.semester}
+                <strong>Credits:</strong> {selectedCourse.credits} | <strong>Semester:</strong> {selectedCourse.semester}
               </div>
               {selectedCourse.description && (
                 <div style={{ marginBottom: '1rem', color: '#666', lineHeight: '1.6' }}>
-                  <strong>课程描述:</strong><br />
+                  <strong>Description:</strong><br />
                   {selectedCourse.description}
                 </div>
               )}
@@ -374,7 +377,7 @@ export default function Home() {
               <div style={{ marginTop: '1.5rem', padding: '1rem', background: '#f8f9fa', borderRadius: '6px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                   <div>
-                    <strong>课程容量:</strong> 已选 {selectedCourse.enrolled} / {selectedCourse.capacity}
+                    <strong>Capacity:</strong> {selectedCourse.enrolled} / {selectedCourse.capacity} enrolled
                   </div>
                   <div style={{ display: 'flex', gap: '0.5rem' }}>
                     <input
@@ -388,7 +391,7 @@ export default function Home() {
                       className="button button-small"
                       onClick={() => updateCapacity(selectedCourse.id)}
                     >
-                      更新容量
+                      Update capacity
                     </button>
                   </div>
                 </div>
@@ -396,29 +399,29 @@ export default function Home() {
 
               <div className="reviews-section">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                  <h3>课程评价 ({reviews.length})</h3>
+                  <h3>Reviews ({reviews.length})</h3>
                   <button
                     className="button button-small"
                     onClick={() => setShowReviewForm(!showReviewForm)}
                   >
-                    {showReviewForm ? '取消' : '添加评价'}
+                    {showReviewForm ? 'Cancel' : 'Add review'}
                   </button>
                 </div>
 
                 {showReviewForm && (
                   <form onSubmit={addReview} style={{ background: '#f8f9fa', padding: '1rem', borderRadius: '6px', marginBottom: '1rem' }}>
                     <div className="form-group">
-                      <label>学生姓名 *</label>
+                      <label>Student name *</label>
                       <input
                         type="text"
                         value={reviewForm.student_name}
                         onChange={(e) => setReviewForm({ ...reviewForm, student_name: e.target.value })}
                         required
-                        placeholder="输入您的姓名"
+                        placeholder="Your name"
                       />
                     </div>
                     <div className="form-group">
-                      <label>评分 *</label>
+                      <label>Rating *</label>
                       <div className="rating-input">
                         <div className="rating-stars">
                           {[1, 2, 3, 4, 5].map((star) => (
@@ -432,24 +435,24 @@ export default function Home() {
                           ))}
                         </div>
                         <span style={{ marginLeft: '0.5rem', color: '#666' }}>
-                          {reviewForm.rating > 0 ? `${reviewForm.rating} / 5` : '请选择评分'}
+                          {reviewForm.rating > 0 ? `${reviewForm.rating} / 5` : 'Select a rating'}
                         </span>
                       </div>
                     </div>
                     <div className="form-group">
-                      <label>评价内容</label>
+                      <label>Comment</label>
                       <textarea
                         value={reviewForm.comment}
                         onChange={(e) => setReviewForm({ ...reviewForm, comment: e.target.value })}
-                        placeholder="写下您的评价..."
+                        placeholder="Write your review..."
                       />
                     </div>
-                    <button type="submit" className="button">提交评价</button>
+                    <button type="submit" className="button">Submit review</button>
                   </form>
                 )}
 
                 {reviews.length === 0 ? (
-                  <div className="empty">暂无评价</div>
+                  <div className="empty">No reviews yet</div>
                 ) : (
                   reviews.map((review) => (
                     <div key={review.id} className="review-item">
@@ -464,7 +467,7 @@ export default function Home() {
                             style={{ marginLeft: '1rem' }}
                             onClick={() => deleteReview(review.id)}
                           >
-                            删除
+                            Delete
                           </button>
                         </div>
                       </div>
@@ -472,7 +475,7 @@ export default function Home() {
                         <div className="review-comment">{review.comment}</div>
                       )}
                       <div className="review-date">
-                        {new Date(review.created_at).toLocaleString('zh-CN')}
+                        {new Date(review.created_at).toLocaleString('en-US')}
                       </div>
                     </div>
                   ))
@@ -484,13 +487,13 @@ export default function Home() {
                   className="button button-danger"
                   onClick={() => deleteCourse(selectedCourse.id)}
                 >
-                  删除课程
+                  Delete course
                 </button>
                 <button
                   className="button button-secondary"
                   onClick={() => setShowModal(false)}
                 >
-                  关闭
+                  Close
                 </button>
               </div>
             </div>
@@ -502,58 +505,58 @@ export default function Home() {
         <div className="modal-overlay" onClick={() => setShowCreateModal(false)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h2>创建新课程</h2>
+              <h2>Create course</h2>
               <button className="close-button" onClick={() => setShowCreateModal(false)}>×</button>
             </div>
 
             <form onSubmit={createCourse}>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
                 <div className="form-group">
-                  <label htmlFor="code">课程代码 *</label>
+                  <label htmlFor="code">Course code *</label>
                   <input
                     type="text"
                     id="code"
                     value={formData.code}
                     onChange={(e) => setFormData({ ...formData, code: e.target.value })}
                     required
-                    placeholder="如: CS101"
+                    placeholder="e.g. CS101"
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="name">课程名称 *</label>
+                  <label htmlFor="name">Course name *</label>
                   <input
                     type="text"
                     id="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
-                    placeholder="如: Introduction to Computer Science"
+                    placeholder="e.g. Introduction to Computer Science"
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="instructor">授课教师 *</label>
+                  <label htmlFor="instructor">Instructor *</label>
                   <input
                     type="text"
                     id="instructor"
                     value={formData.instructor}
                     onChange={(e) => setFormData({ ...formData, instructor: e.target.value })}
                     required
-                    placeholder="如: Dr. Sarah Johnson"
+                    placeholder="e.g. Dr. Sarah Johnson"
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="department">所属院系 *</label>
+                  <label htmlFor="department">Department *</label>
                   <input
                     type="text"
                     id="department"
                     value={formData.department}
                     onChange={(e) => setFormData({ ...formData, department: e.target.value })}
                     required
-                    placeholder="如: Computer Science"
+                    placeholder="e.g. Computer Science"
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="credits">学分</label>
+                  <label htmlFor="credits">Credits</label>
                   <input
                     type="number"
                     id="credits"
@@ -564,7 +567,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="capacity">容量</label>
+                  <label htmlFor="capacity">Capacity</label>
                   <input
                     type="number"
                     id="capacity"
@@ -574,7 +577,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="semester">学期</label>
+                  <label htmlFor="semester">Semester</label>
                   <select
                     id="semester"
                     value={formData.semester}
@@ -586,12 +589,12 @@ export default function Home() {
                   </select>
                 </div>
                 <div className="form-group" style={{ gridColumn: '1 / -1' }}>
-                  <label htmlFor="description">课程描述</label>
+                  <label htmlFor="description">Description</label>
                   <textarea
                     id="description"
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                    placeholder="课程详细描述..."
+                    placeholder="Course description..."
                     style={{ minHeight: '100px' }}
                   />
                 </div>
@@ -614,9 +617,9 @@ export default function Home() {
                     });
                   }}
                 >
-                  取消
+                  Cancel
                 </button>
-                <button type="submit" className="button">创建课程</button>
+                <button type="submit" className="button">Create course</button>
               </div>
             </form>
           </div>
