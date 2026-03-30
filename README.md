@@ -14,13 +14,9 @@ Built with **Next.js**, **OceanBase Cloud** , and deployable on **Vercel**.
 
 You can deploy this demo with one click if you already have an OceanBase database (or create one after provisioning through [OceanBase Cloud](https://www.oceanbase.com/product/cloud)).
 
-**Quick clone** (set `DATABASE_URL` in the Vercel project settings after import):
+**Quick deployment**:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/sc-source/oceanbase-nextjs-vercel-demo&project-name=oceanbase-cloud-starter&repository-name=oceanbase-cloud-starter&env=DATABASE_URL&envDescription=Your%20OceanBase%20database%20connection%20string%20%28mysql%3A%2F%2F...%29&envLink=https://www.oceanbase.com/docs)
-
-**Clone with demo metadata** (for Vercel Templates: update `demo-url` and `demo-image` before submitting):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/sc-source/oceanbase-nextjs-vercel-demo&project-name=oceanbase-cloud-starter&repository-name=oceanbase-cloud-starter&env=DATABASE_URL&envDescription=Enter%20your%20OceanBase%20database%20connection%20string&envLink=https://www.oceanbase.com/docs&demo-title=UniSelect%20Course%20Demo&demo-description=A%20university%20course%20selection%20management%20system%20built%20with%20Next.js%20and%20OceanBase&demo-url=https%3A%2F%2FYOUR_DEMO_URL.vercel.app%2F&demo-image=https%3A%2F%2FYOUR_SCREENSHOT_URL.png)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/sc-source/oceanbase-nextjs-vercel-demo&project-name=OceanBase%20Cloud%20Starter&repository-name=oceanbase-cloud-starter&integration-ids=oac_kzJzQ0seDkU8FXrt6cgoec48&demo-title=OceanBase%20Cloud%20Starter&demo-description=A%20university%20course%20selection%20management%20system%20built%20with%20Next.js%20and%20OceanBase&demo-url=https%3A%2F%2Foceanbase-nextjs-vercel-demo.vercel.app%2F&demo-image=https%3A%2F%2FYOUR_SCREENSHOT_URL.png)
 
 ## Local setup
 
