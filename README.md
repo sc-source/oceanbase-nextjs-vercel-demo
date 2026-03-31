@@ -6,7 +6,7 @@ Built with **Next.js**, **OceanBase Cloud** , and deployable on **Vercel**.
 
 ## Demo
 
-![UniSelect Course screenshot](https://oceanbase-nextjs-vercel-demo.vercel.app/)
+![UniSelect Course screenshot](https://github.com/user-attachments/assets/d1fa46a9-cbe7-4b62-9015-f053da41ac5b)
 
 **Live demo:** [Open the app](https://oceanbase-nextjs-vercel-demo.vercel.app) 
 
@@ -16,7 +16,7 @@ You can deploy this demo with one click if you already have an OceanBase databas
 
 **Quick deployment**:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/sc-source/oceanbase-nextjs-vercel-demo&project-name=OceanBase%20Cloud%20Starter&repository-name=oceanbase-cloud-starter&integration-ids=oac_kzJzQ0seDkU8FXrt6cgoec48&demo-title=OceanBase%20Cloud%20Starter&demo-description=A%20university%20course%20selection%20management%20system%20built%20with%20Next.js%20and%20OceanBase&demo-url=https%3A%2F%2Foceanbase-nextjs-vercel-demo.vercel.app%2F&demo-image=https%3A%2F%2FYOUR_SCREENSHOT_URL.png)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/sc-source/oceanbase-nextjs-vercel-demo&project-name=OceanBase%20Cloud%20Starter&repository-name=oceanbase-cloud-starter&integration-ids=oac_kzJzQ0seDkU8FXrt6cgoec48&demo-title=OceanBase%20Cloud%20Starter&demo-description=A%20university%20course%20selection%20management%20system%20built%20with%20Next.js%20and%20OceanBase&demo-url=https%3A%2F%2Foceanbase-nextjs-vercel-demo.vercel.app%2F&demo-image=https%3A%2F%2Fgithub.com%2Fuser-attachments%2Fassets%2Fd1fa46a9-cbe7-4b62-9015-f053da41ac5b)
 
 ## Local setup
 
